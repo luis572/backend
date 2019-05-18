@@ -39,6 +39,18 @@ public class UsuarioService {
 		}
 		return users;
 	}
+
+	public Usuario getUserByCorreo(String correo) {
+		// TODO Auto-generated method stub
+		Iterable<Usuario> users =per.findAll();
+		for(Usuario u: users) {
+			if(u.getCorreo().equals(correo)) {
+				return u;
+			}
+		}
+		
+		return null;
+	}
 	
 	
 	

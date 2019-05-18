@@ -8,16 +8,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Cliente")
+@Table(name="cliente")
 public class Usuario {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private String correo;
 	private String nombre;
 	private String apellido;
 	private String cedula;
-	private String Correo;
 	private String contrasena;
 	
 	public String getNombre() {
@@ -38,24 +36,18 @@ public class Usuario {
 	public void setCedula(String cedula) {
 		this.cedula = cedula;
 	}
-	public String getCorreo() {
-		return Correo;
-	}
-	public void setCorreo(String correo) {
-		Correo = correo;
-	}
-
 	public String getContrasena() {
 		return contrasena;
 	}
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
 	}
-	public Long getId() {
-		return id;
+	public String getCorreo() {
+		return correo;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setCorreo(String correo) {
+		this.correo = correo;
 	}
+	
 	
 }
