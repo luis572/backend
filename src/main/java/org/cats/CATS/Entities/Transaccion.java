@@ -1,27 +1,48 @@
 package org.cats.CATS.Entities;
-
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Entity;
+@Entity
+@Table(name="transaccion")
 public class Transaccion {
-	private Usuario userTo;
-	private Usuario userFrom;
-	private double valorTransacion;
-	public Usuario getUserTo() {
-		return userTo;
+	@Id
+	private Long id;
+	private String userto;
+	private String userfrom;
+	private double valortransacion;
+
+	public Long getId() {
+		return id;
 	}
-	public void setUserTo(Usuario userTo) {
-		this.userTo = userTo;
+
+	public void setId(Long id) {
+		this.id = id;
 	}
-	public Usuario getUserFrom() {
-		return userFrom;
+
+	public String getUserto() {
+		return userto;
 	}
-	public void setUserFrom(Usuario userFrom) {
-		this.userFrom = userFrom;
+
+	public void setUserto(String userto) {
+		this.userto = userto;
 	}
-	public double getValorTransacion() {
-		return valorTransacion;
+
+	public String getUserfrom() {
+		return userfrom;
 	}
-	public void setValorTransacion(double valorTransacion) {
-		this.valorTransacion = valorTransacion;
+
+	public void setUserfrom(String userfrom) {
+		this.userfrom = userfrom;
 	}
+
+	public double getValortransacion() {
+		return valortransacion;
+	}
+
+	public void setValortransacion(double valortransacion) {
+		this.valortransacion = valortransacion;
+	}
+	
 	
 	
 }

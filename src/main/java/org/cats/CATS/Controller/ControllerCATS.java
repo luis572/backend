@@ -2,7 +2,9 @@ package org.cats.CATS.Controller;
 
 import java.util.List;
 
+import org.cats.CATS.Entities.Transaccion;
 import org.cats.CATS.Entities.Usuario;
+import org.cats.CATS.Service.TransaccionService;
 import org.cats.CATS.Service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,6 +25,8 @@ public class ControllerCATS {
 
 	@Autowired
 	UsuarioService ser;
+	@Autowired
+	TransaccionService transS;
 
 	@CrossOrigin
 	@GetMapping
@@ -61,6 +65,26 @@ public class ControllerCATS {
 
 			return new ResponseEntity<>("No es posible crear el recurso", HttpStatus.FORBIDDEN);
 		}
+
+	}
+	@CrossOrigin
+	@RequestMapping(method = RequestMethod.POST, value = "/transaccion")
+	public @ResponseBody ResponseEntity<?> manejadorCreatetransaccion(@RequestBody Transaccion trans) {
+		try {
+			transS.addTransaccion(trans);
+			return new ResponseEntity<>(HttpStatus.CREATED);
+		} catch (Exception ex) {
+
+			return new ResponseEntity<>("No es posible crear el recurso", HttpStatus.FORBIDDEN);
+		}
+
+	}
+	@CrossOrigin
+	@GetMapping("/all-transaccion")
+	public ResponseEntity<?> getAllTransacciones() {
+		if (transS.getAllTransacciones().size()==0)
+			return new ResponseEntity<>("HTTP 404", HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(transS.getAllTransacciones(), HttpStatus.ACCEPTED);
 
 	}
 
