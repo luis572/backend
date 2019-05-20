@@ -51,6 +51,21 @@ public class UsuarioService {
 		
 		return null;
 	}
+	public void updateUser(String correo,Long montoa) {
+		Usuario user = null;
+	
+		Iterable<Usuario> users =per.findAll();
+		for(Usuario u: users) {
+			if(u.getCorreo().equals(correo)) {
+				user=u;
+			}
+		}
+		per.delete(user);
+		Long monto = user.getMonto()+montoa;
+		user.setMonto(monto);
+		per.save(user);
+		
+	}
 	
 	
 	

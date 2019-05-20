@@ -9,7 +9,7 @@ public class Transaccion {
 	private Long id;
 	private String userto;
 	private String userfrom;
-	private double valortransacion;
+	private Long valortransacion;
 
 	public Long getId() {
 		return id;
@@ -35,13 +35,15 @@ public class Transaccion {
 		this.userfrom = userfrom;
 	}
 
-	public double getValortransacion() {
+	public Long getValortransacion() {
 		return valortransacion;
 	}
 
-	public void setValortransacion(double valortransacion) {
+	public void setValortransacion(Long valortransacion) {
 		this.valortransacion = valortransacion;
 	}
+
+	
 	
 	
 	
