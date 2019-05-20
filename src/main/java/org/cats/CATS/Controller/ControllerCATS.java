@@ -23,6 +23,7 @@ public class ControllerCATS {
 
 	@Autowired
 	UsuarioService ser;
+
 	@CrossOrigin
 	@GetMapping
 	public ResponseEntity<?> getAllUsers() {
@@ -30,6 +31,7 @@ public class ControllerCATS {
 			return new ResponseEntity<>("HTTP 404", HttpStatus.NOT_FOUND);
 		return new ResponseEntity<>(ser.getAllUsuarios(), HttpStatus.ACCEPTED);
 	}
+
 	@CrossOrigin
 	@GetMapping("cedula/{cedula}")
 	public ResponseEntity<?> getUserByCedula(@PathVariable("cedula") String cedula) {
@@ -38,6 +40,7 @@ public class ControllerCATS {
 		return new ResponseEntity<>(ser.getUserByCedula(cedula), HttpStatus.ACCEPTED);
 
 	}
+
 	@CrossOrigin
 	@GetMapping("correo/{correo}")
 	public ResponseEntity<?> getUserByCorreo(@PathVariable("correo") String correo) {

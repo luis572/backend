@@ -17,6 +17,7 @@ public class Usuario {
 	private String apellido;
 	private String cedula;
 	private String contrasena;
+	private Long monto;
 	
 	public String getNombre() {
 		return nombre;
@@ -48,6 +49,13 @@ public class Usuario {
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
-	
+
+	public Long getMonto() {
+		return monto;
+	}
+
+	public void setMonto(Long monto) {
+		this.monto = monto;
+	}
 	
 }
