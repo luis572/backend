@@ -2,8 +2,10 @@ package org.cats.CATS.Controller;
 
 import java.util.List;
 
+import org.cats.CATS.Entities.ListasNegras;
 import org.cats.CATS.Entities.Transaccion;
 import org.cats.CATS.Entities.Usuario;
+import org.cats.CATS.Service.ListasNegrasService;
 import org.cats.CATS.Service.TransaccionService;
 import org.cats.CATS.Service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,8 @@ public class ControllerCATS {
 	UsuarioService ser;
 	@Autowired
 	TransaccionService transS;
+	@Autowired
+	ListasNegrasService lisS;
 
 	@CrossOrigin
 	@GetMapping
@@ -90,31 +94,48 @@ public class ControllerCATS {
 		return new ResponseEntity<>(transS.getAllTransacciones(), HttpStatus.ACCEPTED);
 
 	}
+
 	@CrossOrigin
 	@PutMapping("/update-monto/{user}/{monto}")
-	public ResponseEntity<?> updateMonto(@PathVariable("user") String user,@PathVariable("monto") Long monto) {
+	public ResponseEntity<?> updateMonto(@PathVariable("user") String user, @PathVariable("monto") Long monto) {
 		try {
 			ser.updateUser(user, monto);
 			return new ResponseEntity<>(HttpStatus.OK);
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			return new ResponseEntity<>("No es posible crear el recurso", HttpStatus.FORBIDDEN);
 		}
-		
+
 	}
+
 	@CrossOrigin
 	@PutMapping("/update-monto-t/{user}/{monto}")
-	public ResponseEntity<?> updateMontoT(@PathVariable("user") String user,@PathVariable("monto") Long monto) {
+	public ResponseEntity<?> updateMontoT(@PathVariable("user") String user, @PathVariable("monto") Long monto) {
 		try {
 			ser.updateUserT(user, monto);
 			return new ResponseEntity<>(HttpStatus.OK);
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			return new ResponseEntity<>("No es posible crear el recurso", HttpStatus.FORBIDDEN);
 		}
-		
+	}
+
+	@CrossOrigin
+	@RequestMapping(method = RequestMethod.POST, value = "/lista")
+	public @ResponseBody ResponseEntity<?> manejadorCreateLista(@RequestBody ListasNegras lis) {
+		try {
+			lisS.addLista(lis);
+			return new ResponseEntity<>(HttpStatus.CREATED);
+		} catch (Exception ex) {
+			return new ResponseEntity<>("No es posible crear el recurso", HttpStatus.FORBIDDEN);
+		}
+	}
+
+	@CrossOrigin
+	@GetMapping("/lista/{cedula}")
+	public ResponseEntity<?> getlistaByCedula(@PathVariable String cedula) {
+		if (lisS.getTransaccionByCedula(cedula) == null)
+			return new ResponseEntity<>(0, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(1, HttpStatus.ACCEPTED);
 
 	}
-	
 
 }
