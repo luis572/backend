@@ -1,0 +1,8 @@
+/home/andres/Desktop/backend/src/main/java/org/cats/CATS/CatsApplication.java
+/home/andres/Desktop/backend/src/main/java/org/cats/CATS/Controller/ControllerCATS.java
+/home/andres/Desktop/backend/src/main/java/org/cats/CATS/Repository/UsuarioRepository.java
+/home/andres/Desktop/backend/src/main/java/org/cats/CATS/Entities/Transaccion.java
+/home/andres/Desktop/backend/src/main/java/org/cats/CATS/Repository/TransaccionRepository.java
+/home/andres/Desktop/backend/src/main/java/org/cats/CATS/Entities/Usuario.java
+/home/andres/Desktop/backend/src/main/java/org/cats/CATS/Service/TransaccionService.java
+/home/andres/Desktop/backend/src/main/java/org/cats/CATS/Service/UsuarioService.java

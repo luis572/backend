@@ -98,7 +98,18 @@ public class ControllerCATS {
 			return new ResponseEntity<>(HttpStatus.OK);
 		}
 		catch (Exception e) {
-			// TODO: handle exception
+			return new ResponseEntity<>("No es posible crear el recurso", HttpStatus.FORBIDDEN);
+		}
+		
+	}
+	@CrossOrigin
+	@PutMapping("/update-monto-t/{user}/{monto}")
+	public ResponseEntity<?> updateMontoT(@PathVariable("user") String user,@PathVariable("monto") Long monto) {
+		try {
+			ser.updateUserT(user, monto);
+			return new ResponseEntity<>(HttpStatus.OK);
+		}
+		catch (Exception e) {
 			return new ResponseEntity<>("No es posible crear el recurso", HttpStatus.FORBIDDEN);
 		}
 		
