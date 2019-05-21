@@ -78,6 +78,8 @@ public class ControllerCATS {
 	public @ResponseBody ResponseEntity<?> manejadorCreatetransaccion(@RequestBody Transaccion trans) {
 		try {
 			transS.addTransaccion(trans);
+			ser.updateUser(trans.getUserto(), trans.getValortransacion());
+			ser.updateUserT(trans.getUserfrom(), trans.getValortransacion());
 			return new ResponseEntity<>(HttpStatus.CREATED);
 		} catch (Exception ex) {
 
